@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Oct 7, 2018 2:16:31 PM by Hibernate Tools 5.3.0.Beta2 --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="test" dynamic-insert="false" dynamic-update="false" mutable="true" name="Models.Developers" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="developers">
+        <id name="email" type="string">
+            <column name="email"/>
+            <generator class="assigned"/>
+        </id>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="programminglanguageses" optimistic-lock="true" sort="unsorted" table="programminglanguages">
+            <key on-delete="noaction">
+                <column name="developer"/>
+            </key>
+            <one-to-many class="Models.Programminglanguages" embed-xml="true" not-found="exception"/>
+        </set>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="languageses" optimistic-lock="true" sort="unsorted" table="languages">
+            <key on-delete="noaction">
+                <column name="developer"/>
+            </key>
+            <one-to-many class="Models.Languages" embed-xml="true" not-found="exception"/>
+        </set>
+    </class>
+</hibernate-mapping>
