@@ -58,6 +58,18 @@ var getdeveloper = function() {
 	
 
 };
+
+var reload = function() {
+
+	$.ajax({
+		type : "GET",
+		async : !1,
+		url : "http://localhost:8080/DevelopersInfo/reload", //assuming your controller is configured to accept requests on this URL
+		success : function(result) {
+			// do what ever you want with data
+		}
+	});	
+};
 		
 var postdeveloper = function() {
 	
@@ -172,6 +184,9 @@ var putdeveloper = function() {
 		<div></div>
 		<div></div>
 		
-		<button onclick="location.href = 'http://localhost:8080/DevelopersInfo/';" type="button" id="index">Home</button>
+		<button onclick="location.href = 'http://localhost:8080/DevelopersInfo/';" type="button" id="index">Home</button> <br>
+		<div></div>
+		<div></div>
+		<button type="button" id="reload" onclick="reload()">Reload Data from Server</button>
 </body>
 </html>

@@ -167,7 +167,7 @@ public class SearchResultController {
 	public ModelAndView mymethodapi() {
 		return new ModelAndView("api", "msg", "Welcome First Spring");
 	}
-
+	
 	@RequestMapping("/searchresult/{pageid}")
 	public ModelAndView mymethod(@PathVariable int pageid, HttpServletRequest request,
 			@RequestParam(value = "total", required = false) String total,
@@ -335,7 +335,7 @@ public class SearchResultController {
 
 		List<Developers> resultInOnePage = new ArrayList<>();
 
-		int end = Math.min(start + totalRowsToShow - 1, resultSize-1);
+		int end = Math.min(start + totalRowsToShow, resultSize);
 
 		start--;
 		end--;
@@ -719,6 +719,12 @@ public class SearchResultController {
 
 		return (String) new Gson().toJson(obj);
 
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/reload")
+	public void reload() {
+		initLanguageAndProgrammingLanguageMap();
+		
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/apiput")
