@@ -32,9 +32,6 @@ import Models.*;
 import Models.Developers;
 import Models.Languages;
 
-class temp {
-
-}
 
 @RestController
 public class SearchResultController {
@@ -45,14 +42,14 @@ public class SearchResultController {
 	HashMap<String, HashSet<String>> developerLanguageMap;
 	HashSet<String> unusedProgrammingLanguages;
 
-	List<Developers> result = new ArrayList<>();
+	List<Developers> result = new ArrayList();
 
 	public void initLanguageAndProgrammingLanguageMap() {
 
-		languageMap = new HashMap<>();
-		programmingLanguageMap = new HashMap<>();
-		developerProgrammingLanguageMap = new HashMap<>();
-		developerLanguageMap = new HashMap<>();
+		languageMap = new HashMap();
+		programmingLanguageMap = new HashMap();
+		developerProgrammingLanguageMap = new HashMap();
+		developerLanguageMap = new HashMap();
 		unusedProgrammingLanguages = new HashSet<String>();
 		unusedProgrammingLanguages.add("php");
 		unusedProgrammingLanguages.add("ruby");
@@ -85,7 +82,7 @@ public class SearchResultController {
 			String tempEmail = (String) l.getDevelopers().getEmail();
 			HashSet<String> tempSet;
 			if (!languageMap.containsKey(tempCode)) {
-				tempSet = new HashSet<>();
+				tempSet = new HashSet();
 			} else
 				tempSet = languageMap.get(tempCode);
 			tempSet.add(tempEmail);
@@ -93,7 +90,7 @@ public class SearchResultController {
 
 			HashSet<String> tempSetDeveloper;
 			if (!developerLanguageMap.containsKey(tempEmail)) {
-				tempSetDeveloper = new HashSet<>();
+				tempSetDeveloper = new HashSet();
 			} else
 				tempSetDeveloper = developerLanguageMap.get(tempEmail);
 			tempSetDeveloper.add(tempCode);
@@ -127,7 +124,7 @@ public class SearchResultController {
 			String tempEmail = (String) p.getDevelopers().getEmail();
 			HashSet<String> tempSet;
 			if (!programmingLanguageMap.containsKey(tempName)) {
-				tempSet = new HashSet<>();
+				tempSet = new HashSet();
 			} else
 				tempSet = programmingLanguageMap.get(tempName);
 			tempSet.add(tempEmail);
@@ -135,7 +132,7 @@ public class SearchResultController {
 
 			HashSet<String> tempSetDeveloper;
 			if (!developerProgrammingLanguageMap.containsKey(tempEmail)) {
-				tempSetDeveloper = new HashSet<>();
+				tempSetDeveloper = new HashSet();
 			} else
 				tempSetDeveloper = developerProgrammingLanguageMap.get(tempEmail);
 			tempSetDeveloper.add(tempName);
@@ -187,7 +184,7 @@ public class SearchResultController {
 
 		if (total == null) {
 
-			result = new ArrayList<>();
+			result = new ArrayList();
 
 			resultSize = 0;
 
@@ -207,8 +204,8 @@ public class SearchResultController {
 			kotlin = (String) request.getParameter("kotlin");
 			swift = (String) request.getParameter("swift");
 
-			List<String> languageList = new ArrayList<>();
-			List<String> programmingLanguageList = new ArrayList<>();
+			List<String> languageList = new ArrayList();
+			List<String> programmingLanguageList = new ArrayList();
 
 			if (bd != null)
 				languageList.add((String) "bd");
@@ -333,7 +330,7 @@ public class SearchResultController {
 			totalPages = Integer.parseInt((java.lang.String) total);
 		}
 
-		List<Developers> resultInOnePage = new ArrayList<>();
+		List<Developers> resultInOnePage = new ArrayList();
 
 		int end = Math.min(start + totalRowsToShow, resultSize);
 
@@ -437,8 +434,8 @@ public class SearchResultController {
 		List<Developers> showTempresult = select(start, totalRowsToShow);
 		int totalDevelopers = showTempresult.size();
 
-		List<String> languageList = new ArrayList<>();
-		List<String> programingLanguageList = new ArrayList<>();
+		List<String> languageList = new ArrayList();
+		List<String> programingLanguageList = new ArrayList();
 
 		if (developerLanguageMap == null)
 			initLanguageAndProgrammingLanguageMap();
@@ -535,8 +532,8 @@ public class SearchResultController {
 
 			String email = entry.getKey();
 
-			HashSet<String> programmingLanguageFordeletedEmail = new HashSet<>();
-			HashSet<String> languageFordeletedEmail = new HashSet<>();
+			HashSet<String> programmingLanguageFordeletedEmail = new HashSet();
+			HashSet<String> languageFordeletedEmail = new HashSet();
 
 			if (developerProgrammingLanguageMap.containsKey(email))
 				programmingLanguageFordeletedEmail = developerProgrammingLanguageMap.get(email);
@@ -561,20 +558,16 @@ public class SearchResultController {
 		boolean failed = false;
 		TempProgramminglanguages thing = new TempProgramminglanguages("0", "0");
 
-		try {
 			Gson gson = new Gson();
 			thing = gson.fromJson((java.lang.String) jsonRequest, TempProgramminglanguages.class);
-		} catch (IllegalStateException | JsonSyntaxException exception) {
-			System.out.println(exception.toString());
-			failed = true;
-		}
+		
 		boolean successfull = false;
 		String emailForDelete = (String) thing.getDevelopers();
 		String programmingLanguageForDelete = (String) thing.getName();
 
-		HashSet<String> programmingLanguageSetFordeletedEmail = new HashSet<>();
-		HashSet<String> languageSetFordeletedEmail = new HashSet<>();
-		HashSet<String> programmingLanguageSetTodeletedEmail = new HashSet<>();
+		HashSet<String> programmingLanguageSetFordeletedEmail = new HashSet();
+		HashSet<String> languageSetFordeletedEmail = new HashSet();
+		HashSet<String> programmingLanguageSetTodeletedEmail = new HashSet();
 
 		if (developerProgrammingLanguageMap.containsKey(emailForDelete))
 			programmingLanguageSetFordeletedEmail = developerProgrammingLanguageMap.get(emailForDelete);
@@ -643,20 +636,16 @@ public class SearchResultController {
 		boolean failed = false;
 		TempProgramminglanguages thing = new TempProgramminglanguages("0", "0");
 
-		try {
 			Gson gson = new Gson();
 			thing = gson.fromJson((java.lang.String) jsonRequest, TempProgramminglanguages.class);
-		} catch (IllegalStateException | JsonSyntaxException exception) {
-			System.out.println(exception.toString());
-			failed = true;
-		}
+		
 		boolean successfull = false;
 		String emailForPost = (String) thing.getDevelopers();
 		String programmingLanguageForPost = (String) thing.getName();
 
-		HashSet<String> programmingLanguageSetForpostEmail = new HashSet<>();
-		HashSet<String> languageSetForpostEmail = new HashSet<>();
-		HashSet<String> programmingLanguageSetTopostEmail = new HashSet<>();
+		HashSet<String> programmingLanguageSetForpostEmail = new HashSet();
+		HashSet<String> languageSetForpostEmail = new HashSet();
+		HashSet<String> programmingLanguageSetTopostEmail = new HashSet();
 
 		if (developerProgrammingLanguageMap.containsKey(emailForPost))
 			programmingLanguageSetForpostEmail = developerProgrammingLanguageMap.get(emailForPost);
@@ -733,13 +722,9 @@ public class SearchResultController {
 		boolean failed = false;
 		TempUpdateProgramminglanguages thing = new TempUpdateProgramminglanguages("0", "0","0");
 
-		try {
 			Gson gson = new Gson();
 			thing = gson.fromJson((java.lang.String) jsonRequest, TempUpdateProgramminglanguages.class);
-		} catch (IllegalStateException | JsonSyntaxException exception) {
-			System.out.println(exception.toString());
-			failed = true;
-		}
+		
 		
 		
 		boolean succesfull = false;
@@ -747,10 +732,10 @@ public class SearchResultController {
 		String inprogrammingLanguageForPut = (String) thing.getInname();
 		String outprogrammingLanguageForPut = (String) thing.getOutname();
 
-		HashSet<String> programmingLanguageSetForputEmail = new HashSet<>();
-		HashSet<String> languageSetForputEmail = new HashSet<>();
-		HashSet<String> inprogrammingLanguageSetToputEmail = new HashSet<>();
-		HashSet<String> outprogrammingLanguageSetToputEmail = new HashSet<>();
+		HashSet<String> programmingLanguageSetForputEmail = new HashSet();
+		HashSet<String> languageSetForputEmail = new HashSet();
+		HashSet<String> inprogrammingLanguageSetToputEmail = new HashSet();
+		HashSet<String> outprogrammingLanguageSetToputEmail = new HashSet();
 
 		if (developerProgrammingLanguageMap.containsKey(emailForPut))
 			programmingLanguageSetForputEmail = developerProgrammingLanguageMap.get(emailForPut);

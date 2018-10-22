@@ -37,17 +37,10 @@ public class TestRestController {
 		
 		boolean failed = false;
 		Interviews thing=new Interviews(0,"0");
-		
-		try
-		{
+
 			Gson gson = new Gson();
 		    thing = gson.fromJson(jsonRequest, Interviews.class);
-		}
-		catch (IllegalStateException | JsonSyntaxException exception)
-		{
-			System.out.println(exception.toString());
-		  failed = true;
-		}
+		
 		
 		
 
@@ -142,17 +135,10 @@ public class TestRestController {
 
 		boolean failed = false;
 		Interviews thing=new Interviews(0,"0");
-		
-		try
-		{
+
 			Gson gson = new Gson();
 		    thing = gson.fromJson(jsonRequest, Interviews.class);
-		}
-		catch (IllegalStateException | JsonSyntaxException exception)
-		{
-			System.out.println(exception.toString());
-		  failed = true;
-		}
+		
 		
 		
 		
