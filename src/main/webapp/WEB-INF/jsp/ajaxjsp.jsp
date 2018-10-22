@@ -430,9 +430,9 @@ to {
 		<%
 			try {
 				Class.forName("com.mysql.jdbc.Driver");
-				String url = "jdbc:mysql://localhost/test";
-				String username = "root";
-				String password = "123456";
+				String url = "jdbc:mysql://db4free.net/mrinaldb";
+				String username = "mrinal";
+				String password = "12345678";
 				String query = "select * from interviews";
 				Connection conn = DriverManager.getConnection(url, username, password);
 				Statement stmt = conn.createStatement();

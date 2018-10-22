@@ -5,10 +5,10 @@
 <hibernate-configuration>
 	<session-factory>
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="hibernate.connection.password">123456</property>
-		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/test?autoReconnect=true&amp;useSSL=false</property>
-		<property name="hibernate.connection.username">root</property>
-		<property name="hibernate.default_schema">test</property>
+		<property name="hibernate.connection.password">12345678</property>
+		<property name="hibernate.connection.url">jdbc:mysql://db4free.net:3306/mrinaldb?autoReconnect=true&amp;useSSL=false</property>
+		<property name="hibernate.connection.username">mrinal</property>
+		<property name="hibernate.default_schema">mrinaldb</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
 
 		<mapping resource="Models/Developers.hbm.xml"
